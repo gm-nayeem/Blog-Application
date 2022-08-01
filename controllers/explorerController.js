@@ -64,7 +64,6 @@ exports.explorerGetController = async (req, res, next) => {
             let profile = await Profile.findOne({user: req.user._id})
             if(profile) {
                 bookmarks = profile.bookmarks
-                //bookmarks.push(profile.bookmarks) 
             }
         }
 

@@ -3,7 +3,7 @@ const Post = require('../../models/Post')
 
 exports.bookmarksGetController = async (req, res, next) => {
     let {postId} = req.params 
-    console.log('I am comming from bookmark')
+
     if(!req.user) {
         return res.status(403).json({
             error: 'You are not an authenticated user'
@@ -30,7 +30,7 @@ exports.bookmarksGetController = async (req, res, next) => {
             bookmark = true
         }
        
-        res.sendStatus(200).json({
+        res.status(200).json({
             bookmark
         })
 
@@ -40,4 +40,5 @@ exports.bookmarksGetController = async (req, res, next) => {
             error: 'Server Error Occurred'
         })
     }
+
 }

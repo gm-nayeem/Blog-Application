@@ -1,15 +1,15 @@
+// for bookmark showing from frontend 
+
 window.onload = function() {
     const bookmarks = document.getElementsByClassName('bookmark');
     [...bookmarks].forEach(bookmark => {
         bookmark.style.cursor = 'pointer'
         bookmark.addEventListener('click', function(e) {
             let target = e.target.parentElement
-            // console.log(target)
-            //target.innerHTML = '<i class="fas fa-bookmark"></i>'
-            
+           
             let headers = new Headers()
             headers.append('Accept', 'Application/JSON')
-            console.log(target.dataset.post)
+
             let req = new Request(`/api/bookmarks/${target.dataset.post}`, {
                 method: 'GET',
                 headers,
@@ -18,9 +18,7 @@ window.onload = function() {
 
             fetch(req) 
                 .then(res => res.json())
-                console.log(res)
-                .then(data => {
-            
+                .then(data => {           
                     if(data.bookmark) {
                         target.innerHTML = '<i class="fas fa-bookmark"></i>'
                     } else {
@@ -28,10 +26,10 @@ window.onload = function() {
                     }
                 })
                 .catch(e => {
-                    console.log("error")
-                    //console.log(e.response.data.error)
-                    alert(e)
+                    console.log(e.response.data)
+                    alert(e.response.data.error)
                 })
         })
     })
+
 }

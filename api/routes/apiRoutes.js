@@ -21,6 +21,6 @@ router.post('comments/replies/:commentId', isAuthenticated, replyCommentPostCont
 router.get('/likes/:postId', isAuthenticated, likesGetController)
 router.get('/dislikes/:postId', isAuthenticated, dislikesGetController)
 
-router.get('bookmarks/:postId', isAuthenticated, bookmarksGetController)
+router.get('/bookmarks/:postId', isAuthenticated, bookmarksGetController)
 
 module.exports = router
