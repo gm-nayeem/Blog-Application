@@ -1,9 +1,13 @@
 const router = require('express').Router()
 
-const {explorerGetController} = require('../controllers/explorerController')
+const {
+    explorerGetController, 
+    singlePostGetController
+} = require('../controllers/explorerController')
 
 const {isAuthenticated} = require('../middleware/authMiddleware')
 
+router.get('/:postId', isAuthenticated, singlePostGetController)
 router.get('/', isAuthenticated, explorerGetController)
 
 

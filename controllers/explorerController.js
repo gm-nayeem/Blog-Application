@@ -82,3 +82,54 @@ exports.explorerGetController = async (req, res, next) => {
     }
 
 }
+
+
+exports.singlePostGetController = async (req, res, next) => {
+    console.log('I am comming to single post controller');
+    let {postId} = req.params
+
+    try {
+        let post = await Post.findById(postId)
+            .populate('author', 'username')
+            .populate({
+                path: 'comments',
+                populate: {
+                    path: 'user',
+                    select: 'username profilePics'
+                }
+            })
+            .populate({
+                path: 'comments',
+                populate: {
+                    path: 'replies.user',
+                    select: 'username profilePics'
+                }
+            })
+
+        if(!post) {
+            let error = new Error('404 Page Not  Found')
+            error.status = 404
+            throw error
+        }
+
+        let bookmarks = []
+        if(req.user) {
+            let profile = await Profile.findOne({user: req.user._id})
+            if(profile) {
+                bookmarks = profile.bookmarks
+            }
+        }
+
+        res.render('pages/explorer/singlePostPage', {
+            title: post.title,
+            flashMessage: Flash.getMessage(req),
+            post,
+            bookmarks
+        })
+
+        console.log("end page controller")
+
+    } catch(e) {
+        next(e)
+    }
+}
