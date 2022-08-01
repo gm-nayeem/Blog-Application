@@ -3,8 +3,7 @@ const Post = require('../../models/Post')
 
 exports.bookmarksGetController = async (req, res, next) => {
     let {postId} = req.params 
-    let bookmark = null
-
+    console.log('I am comming from bookmark')
     if(!req.user) {
         return res.status(403).json({
             error: 'You are not an authenticated user'
@@ -12,6 +11,7 @@ exports.bookmarksGetController = async (req, res, next) => {
     }
 
     let userId = req.user._id
+    let bookmark = null
 
     try {
         let profile = await Profile.findOne({user: userId})
@@ -29,8 +29,8 @@ exports.bookmarksGetController = async (req, res, next) => {
             )
             bookmark = true
         }
-
-        res.status(200).json({
+       
+        res.sendStatus(200).json({
             bookmark
         })
 

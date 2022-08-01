@@ -2,6 +2,7 @@ const authRoutes = require('./authRoute');
 const dashboardRoutes = require('./dashboardRoutes');
 const uploadRoute = require('./uploadRoutes')
 const postRoutes = require('./postRoute')
+const explorerRoutes = require('./explorerRoute')
 
 const apiRoutes = require('../api/routes/apiRoutes')
 
@@ -21,6 +22,10 @@ const routes = [
     {
         path: '/posts',
         handler: postRoutes
+    },
+    {
+        path: '/explorer',
+        handler: explorerRoutes
     },
     {
         path: '/api',
