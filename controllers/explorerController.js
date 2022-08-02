@@ -85,7 +85,6 @@ exports.explorerGetController = async (req, res, next) => {
 
 
 exports.singlePostGetController = async (req, res, next) => {
-    console.log('I am comming to single post controller');
     let {postId} = req.params
 
     try {
@@ -127,7 +126,6 @@ exports.singlePostGetController = async (req, res, next) => {
             bookmarks
         })
 
-        console.log("end page controller")
 
     } catch(e) {
         next(e)
