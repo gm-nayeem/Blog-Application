@@ -2,6 +2,7 @@ window.onload = function() {
     const comment = document.getElementById('comment')
     const commentHolder = document.getElementById('comment-holder')
 
+    // comments code start here
     comment.addEventListener('keypress', function(e){
         if(e.key === 'Enter') {
             if(e.target.value) {
@@ -29,6 +30,39 @@ window.onload = function() {
         }
     })
 
+
+    // comments reply code start here
+    commentHolder.addEventListener('keypress', function(e) {
+        if(commentHolder.hasChildNodes(e.target)) {
+            if(e.key === 'Enter') {
+                let commentId = e.target.dataset.comment
+                let value = e.target.value
+
+                if(value) {
+                    let data = {
+                        body: value
+                    }
+                    let req = generateRequest(`/api/comments/replies/${commentId}`, 'POST', data)
+                    fetch(req)
+                        .then(res => res.json())
+                        .then(data => {
+                            let replyElement = createReplyComment(data)
+                            let parent = e.target.parentElement
+                            parent.previousElementSibling.appendChild(replyElement)
+                            e.target.value = ''
+                        })
+                        .catch(e => {
+                            console.log(e.message)
+                            alert(e.message)
+                        })
+                        
+                } else {
+                    alert('Please Enter A Valid Reply')
+                }
+            }
+        }
+    })
+
 }
 
 function generateRequest(url, method, body) {
@@ -51,7 +85,7 @@ function createComment(comment) {
         <img src="${comment.user.profilePics}" class="rounded-circle mx-3 my-3" 
         style="width: 40px">
         <div class="media-body my-3">
-            <p>${comment.body}</p>
+            <p class="my-3>${comment.body}</p>
             <div class="my-3">
                 <input type="text" class="form-control" placeholder="Press Enter to Reply" 
                 name="reply" data-comment=${comment._id}>
@@ -64,4 +98,21 @@ function createComment(comment) {
     div.innerHTML = innerHtml
     return div
     
+}
+
+
+function createReplyComment(reply) {
+    console.log(reply.profilePics)
+    let innerHtml = `
+        <img src="${reply.profilePics}" class="align-self-start mr-3 rounded-circle" 
+        style="width: 40px">
+        <div class="media-body">
+            <p>${reply.body}</p>
+        </div>
+    `
+
+    let div = document.createElement('div') 
+    div.className = 'media mt-3'
+    div.innerHTML = innerHtml
+    return div
 }

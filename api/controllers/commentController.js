@@ -65,7 +65,7 @@ exports.replyCommentPostController = async (req, res, next) => {
             {$push: {replies: reply}}
         )
 
-        res.status(201).json({
+        return res.status(201).json({
             ...reply,
             profilePics: req.user.profilePics
         })
