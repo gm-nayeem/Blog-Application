@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
-    console.log(error)
+    console.log(error.message)
     if(res.headersSent){
         next('There was an header sent problem')
     } else {

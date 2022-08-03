@@ -49,7 +49,7 @@
                                 </button>
                                 <div class="mt-5">
                                     <label for="comment">Leave A comment</label>
-                                    <input type="text" class="form-control" id="comment" placeholder="Press Enter to Comment" data-post="post._id">
+                                    <input type="text" class="form-control" id="comment" placeholder="Press Enter to Comment" data-post="<%= post._id %>">
                                 </div>
                                 <div class="mt-5" id="comment-holder">
                                     <% if(post.comments.length === 0) { %>
@@ -92,8 +92,10 @@
 
 <%- include('../../partials/footer.ejs') %>
 
-<script src="/scripts/bookmarks.js"></script>
+<script src="/scripts/comments.js"></script>
 <script src="/scripts/likeDislike.js"></script>
+<script src="/scripts/bookmarks.js"></script>
+
 
 </body>
 </html>

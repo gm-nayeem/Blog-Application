@@ -6,6 +6,7 @@ exports.commentPostController = async (req, res, next) => {
     let {postId} = req.params
     let {body} = req.body
 
+
     if(!req.user) {
         return res.status(403).json({
             error: 'You are not an authenticated user'
@@ -26,14 +27,12 @@ exports.commentPostController = async (req, res, next) => {
             {$push: {comments: createdComment._id}}
         )
 
-        let commentJson = await findById(createdComment._id).populate({
+        let commentJson = await Comment.findById(createdComment._id).populate({
             path: 'user',
             select: 'profilePics username '
         })
 
-        console.log(commentJson)
-
-        return res.status(201).json(commentJson)
+        res.status(201).json(commentJson)
 
     } catch(e) {
         console.log(e)
