@@ -47,7 +47,6 @@ function generateRequest(url, method, body) {
 }
 
 function createComment(comment) {
-    console.log(comment.user.profilePics)
     let innerHtml = `
         <img src="${comment.user.profilePics}" class="rounded-circle mx-3 my-3" 
         style="width: 40px">

@@ -1,4 +1,5 @@
 window.onload = function(e) {
+    console.log("I am comming to like and dislike")
     const likeBtn = document.getElementById('likeBtn')
     const dislikeBtn = document.getElementById('dislikeBtn')
 
@@ -39,18 +40,33 @@ window.onload = function(e) {
     })
 
 
-    function reqLikeDislike(type, postId) {
-        let headers = new Headers()
-        headers.append('Accept', 'Application/JSON')
-        headers.append('content-type', 'Application/JSON')
+    // function reqLikeDislike(type, postId) {
+    //     let headers = new Headers()
+    //     headers.append('Accept', 'Application/JSON')
+    //     headers.append('content-type', 'Application/JSON')
     
-        let req = new Request(`/api/${type}/${postId}`, {
-            method: 'GET',
-            headers,
-            mode: 'cors'
-        })
+    //     let req = new Request(`/api/${type}/${postId}`, {
+    //         method: 'GET',
+    //         headers,
+    //         mode: 'cors'
+    //     })
 
-        return fetch(req)
-    }
+    //     return fetch(req)
+    // }
 
+}
+
+
+function reqLikeDislike(type, postId) {
+    let headers = new Headers()
+    headers.append('Accept', 'Application/JSON')
+    headers.append('content-type', 'Application/JSON')
+
+    let req = new Request(`/api/${type}/${postId}`, {
+        method: 'GET',
+        headers,
+        mode: 'cors'
+    })
+
+    return fetch(req)
 }
