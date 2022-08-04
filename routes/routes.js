@@ -3,6 +3,7 @@ const dashboardRoutes = require('./dashboardRoutes');
 const uploadRoute = require('./uploadRoutes')
 const postRoutes = require('./postRoute')
 const explorerRoutes = require('./explorerRoute')
+const searchRoute = require('./searchRoute')
 
 const apiRoutes = require('../api/routes/apiRoutes')
 
@@ -26,6 +27,10 @@ const routes = [
     {
         path: '/explorer',
         handler: explorerRoutes
+    },
+    {
+        path: '/search',
+        handler: searchRoute
     },
     {
         path: '/api',
