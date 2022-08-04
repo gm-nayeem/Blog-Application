@@ -104,6 +104,17 @@ exports.singlePostGetController = async (req, res, next) => {
                     select: 'username profilePics'
                 }
             })
+            // .populate({
+            //     path: 'comments',
+            //     populate: {
+            //         path: 'replies',
+            //         populate: {
+            //             path: 'user',
+            //             select: 'username profilePics'
+            //         }
+            //     }                
+            // })
+           
 
         if(!post) {
             let error = new Error('404 Page Not  Found')
