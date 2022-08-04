@@ -1,0 +1,63 @@
+<%- include('../../partials/header.ejs') %>
+
+    <div class="container my-5">
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+             <div class="d-flex">
+                <div class="card card-body">
+
+                    <div>
+                        <img style="width: auto; height: auto;" src="<%= author.profilePics %>" class="img-thumbnail img-fluid">
+                    </div>
+                    <div class="my-3">
+                        Name: <strong><%= author.profile.name %></strong><br>
+                        Title: <strong><%= author.profile.title %></strong>
+                        <p>Bio: <%= author.profile.bio %></p>
+    
+                        <div>
+                            <% if(author.profile.links.website) { %>
+                                <span>
+                                    <a href="<%= author.profile.links.website %>">
+                                        <i class="fab fa-internet-explorer"></i>
+                                    </a>
+                                </span>
+                            <% } %>
+                            <% if(author.profile.links.facebook) { %>
+                                <span>
+                                    <a href="<%= author.profile.links.website %>">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </a>
+                                </span>
+                            <% } %>
+                            <% if(author.profile.links.twitter) { %>
+                                <span>
+                                    <a href="<%= author.profile.links.website %>">
+                                        <i class="fab fa-twitter-square"></i>
+                                    </a>
+                                </span>
+                            <% } %>
+                            <% if(author.profile.links.github) { %>
+                                <span>
+                                    <a href="<%= author.profile.links.website %>">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </span>
+                            <% } %>
+                        </div>
+                    </div>
+
+                </div>
+             </div>
+            </div>
+        </div>
+        
+    </div>
+
+<%- include('../../partials/footer.ejs') %>
+
+<!-- <script src="/scripts/bookmarks.js"></script> -->
+
+</body>
+</html>
+

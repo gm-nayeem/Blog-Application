@@ -10,7 +10,7 @@
                         <div class="d-flex">
                             <small>
                                 <%= moment(post.createdAt) %>,
-                                Posted By <%= post.author.username %>,
+                                Posted By <a href="/author/<%= post.author._id %>"><%= post.author.username %></a>,
                                 <%= post.readTime %>
                             </small>
                            <% if(user) { %>
@@ -27,7 +27,7 @@
                             <img src="<%= post.thumbnail %>" class="img-fluid my-2">
                         <% } %>
 
-                        <section>
+                        <section class="my-1">
                             <%- post.body %>
                         </section>
 
