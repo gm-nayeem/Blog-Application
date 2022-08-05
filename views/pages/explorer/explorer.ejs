@@ -3,7 +3,7 @@
     <div class="container my-5">
 
         <div class="row">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-8 offset-md-2">
                 <section class="mb-5">
                     <a 
                         href="/explorer?filter=latest"
@@ -23,41 +23,43 @@
                     >All</a>
                 </section>
 
-                <section>
+                <div class="row">
                     <% if(posts.length == 0) { %>
                         <p class="text-center text-muted">
                             There is nothing to show
                         </p>
                     <% } else { %>
                         <% for(let post of posts) { %>
-                            <div class="card card-body mb-3">
+                            <div class="card col-sm-5 ml-3 mb-5">
                                 <% if(post.thumbnail) { %>
-                                    <img src="<%= post.thumbnail %>" alt="Post Thumbnail" class="img-fluid mb-2">
+                                    <img style="height: 220px" src="<%= post.thumbnail %>" alt="Post Thumbnail" class="card-image-top mt-3">
                                 <% } %>
-                                <a href="/explorer/<%= post._id %>" style="color: #222222">
-                                    <h5><%= post.title %></h5>
-                                    <p class="mb-4"><%= truncate(post.body) %></p>
-                                </a>
-                                <div class="d-flex">
-                                    <small>
-                                        <%= moment(post.createdAt) %>,
-                                        Posted By <a href="/author/<%= post.author._id %>"><%= post.author.username %></a>,
-                                        <%= post.readTime %>
-                                    </small>
-                                   <% if(user) { %>
-                                        <span class="ml-auto bookmark" data-post="<%= post._id %>" >
-                                            <% if(bookmarks.includes(post._id)) { %>
-                                                <i class="fas fa-bookmark"></i>
-                                            <% } else { %>
-                                                <i class="far fa-bookmark"></i>
-                                            <% } %>
-                                        </span>
-                                   <% } %>     
+                                <div class="card-body p-0 mt-2 mb-3">
+                                    <a href="/explorer/<%= post._id %>" style="color: #222222">
+                                        <h5><%= post.title %></h5>
+                                        <p class="mb-4"><%= truncate(post.body) %></p>
+                                    </a>
+                                    <div class="d-flex">
+                                        <small>
+                                            <%= moment(post.createdAt) %>,
+                                            Posted By <a href="/author/<%= post.author._id %>"><%= post.author.username %></a>,
+                                            <%= post.readTime %>
+                                        </small>
+                                    <% if(user) { %>
+                                            <span class="ml-auto bookmark" data-post="<%= post._id %>" >
+                                                <% if(bookmarks.includes(post._id)) { %>
+                                                    <i class="fas fa-bookmark"></i>
+                                                <% } else { %>
+                                                    <i class="far fa-bookmark"></i>
+                                                <% } %>
+                                            </span>
+                                    <% } %>     
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
                     <% } %>
-                </section>
+                </div>
 
                 <% if(totalPage > 1) { %>
                     <nav>

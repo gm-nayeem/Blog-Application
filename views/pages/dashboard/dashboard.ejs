@@ -1,63 +1,56 @@
 <%- include('../../partials/header.ejs') %>
 
     <div class="container my-container">
+        <div class="row">
 
-       <div class="row">
             <div class="col-md-2">
                 <%- include('../../partials/sidebar.ejs') %>
             </div>
-        
-            <div class="col-md-10">
-
+            
+            <div class="col-md-9 offset-md-1">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <h5>Recently Created Posts</h5>
-                        <div class="row">
-                            <% if(posts.length == 0) { %>
-                                <div class="text-center text-muted my-5">
-                                    <p>There is no post available right now</p>
-                                </div>
-                            <% } else { %>
-                                <% for(let post of posts) { %>
-                                    <div class="card col-sm-3 m-2">
-                                        <% if(post.thumbnail) { %>
-                                            <img src="<%= post.thumbnail %>" alt="<% post.title %>" class="card-image-top mt-3">
-                                        <% } %>
-                                        <div class="card-body p-0">
-                                            <a href="/explorer/<%= post._id %>" style="color: #222">
-                                                <p class="my-2"><%= post.title %></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <% } %>
-                            <% } %>               
+                    <h5>Recently Created Posts</h5>
+                    <% if(posts.length == 0) { %>
+                        <div class="text-center text-muted my-5">
+                            <p>There is no post available right now</p>
                         </div>
-                    </div>
+                    <% } else { %>
+                        <% for(let post of posts) { %>
+                            <div class="card col-sm-3 m-3">
+                                <% if(post.thumbnail) { %>
+                                    <img style="height: 200px" src="<%= post.thumbnail %>" alt="<% post.title %>" class="card-image-top mt-3">
+                                <% } %>
+                                <div class="card-body p-0">
+                                    <a href="/explorer/<%= post._id %>" style="color: #222">
+                                        <p class="mt-2 mb-4"><%= post.title %></p>
+                                    </a>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>                   
                 </div>
 
-                <div class="row">
-                    <div class="col-md-8 offset-md-2 my-5">
+                <div class="row my-5">
+                    <div class="row">
                         <h5>Recently Created Bookmarks</h5>
-                        <div class="row">
-                            <% if(bookmarks.length == 0) { %>
-                                <div class="text-center text-muted my-5">
-                                    <p>There is no bookmarks available right now</p>
-                                </div>
-                            <% } else { %>
-                                <% for(let bookmark of bookmarks) { %>
-                                    <div class="card col-sm-3 m-2">
-                                        <% if(bookmark.thumbnail) { %>
-                                            <img src="<%= bookmark.thumbnail %>" alt="<% bookmark.title %>" class="card-image-top mt-3">
-                                        <% } %>
-                                        <div class="card-body p-0">
-                                            <a href="/explorer/<%= bookmark._id %>" style="color: #222">
-                                                <p class="my-2"><%= bookmark.title %></p>
-                                            </a>
-                                        </div>
+                        <% if(bookmarks.length == 0) { %>
+                            <div class="text-center text-muted my-5">
+                                <p>There is no bookmarks available right now</p>
+                            </div>
+                        <% } else { %>
+                            <% for(let bookmark of bookmarks) { %>
+                                <div class="card col-sm-3 m-2">
+                                    <% if(bookmark.thumbnail) { %>
+                                        <img style="height: 200px" src="<%= bookmark.thumbnail %>" alt="<% bookmark.title %>" class="card-image-top mt-3">
+                                    <% } %>
+                                    <div class="card-body p-0">
+                                        <a href="/explorer/<%= bookmark._id %>" style="color: #222">
+                                            <p class="mt-2 mb-4"><%= bookmark.title %></p>
+                                        </a>
                                     </div>
-                                <% } %>
-                            <% } %>               
-                        </div>
+                                </div>
+                            <% } %>
+                        <% } %>               
                     </div>
                 </div>
 

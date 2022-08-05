@@ -3,12 +3,7 @@
     <div class="container-fluid">
 
         <div class="row">
-
-            <div class="col-md-2 my-5">
-                <%- include('../../../partials/sidebar.ejs') %>
-            </div>
-
-            <div class="col-md-10 my-5">
+            <div class="col-md-10 offset-md-1 my-5">
 
                 <div class="card card-body">
                     <h5>Lists of My Posts</h5>
@@ -22,11 +17,11 @@
                             <% for(let post of posts.reverse()) { %>
                                 <div class="card col-sm-3 m-3">
                                     <% if(post.thumbnail) { %>
-                                        <img src="<%= post.thumbnail %>" alt="<% post.title %>" class="card-image-top mt-3">
+                                        <img style="height: 200px" src="<%= post.thumbnail %>" alt="<% post.title %>" class="card-image-top mt-3">
                                     <% } %>
-                                    <div class="card-body">
+                                    <div class="card-body p-0">
                                         <a href="/posts/edit-post/<%= post._id %>" style="color: #222">
-                                            <h5><%= post.title %></h5>
+                                            <p class="mt-2 mb-4"><%= post.title %></p>
                                         </a>
                                     </div>
                                 </div>
