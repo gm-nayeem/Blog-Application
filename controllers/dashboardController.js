@@ -22,11 +22,11 @@ exports.dashboardGetController = async (req, res, next) => {
         next(e)
     }
 
-    res.render('pages/dashboard/dashboard',
-        {
-            title: 'My Dashboard',
-            flashMessage: Flash.getMessage(req)
-        })
+    // res.render('pages/dashboard/dashboard',
+    //     {
+    //         title: 'My Dashboard',
+    //         flashMessage: Flash.getMessage(req)
+    //     })
 }
 
 exports.createProfileGetController = async (req, res, next) => {
