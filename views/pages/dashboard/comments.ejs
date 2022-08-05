@@ -1,0 +1,49 @@
+<%- include('../../partials/header.ejs') %>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card card-body">
+                   <h5>My Recent Comments</h5>                   
+                   <div class="mt-5" id="comment-holder">
+                        <% if(comments.length === 0) { %>
+                            <p class="text-center text-muted">There is No Comment</p>
+                        <% } else { %>
+                            <% for(let comment of comments.reverse()) { %>
+                                <div class="media border">
+                                    <img src="<%= comment.user.profilePics %>" class="rounded-circle mx-3 my-3" style="width: 40px">
+                                    <div media-body my-3>
+                                        <p class="my-3"><%= comment.body %></p>
+                                        <div name="replies">
+                                            <% if(comment.replies.length > 0) { %>
+                                                <% for(let reply of comment.replies){ %>
+                                                    <div class="media mt-3">
+                                                        <img src="<%= reply.user.profilePics %>" class="align-self-start rounded-circle mr-3" style="width: 40px;">
+                                                        <div class="media-body">                                                          
+                                                            <p><%= reply.body %></p>
+                                                        </div>
+                                                    </div>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                        <div class="my-3">
+                                            <input type="text" class="form-control" name="reply" placeholder="Press Enter to Reply" data-comment="<%= comment._id %>">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            <% } %>
+                        <% } %>
+                </div>                       
+                </div>
+            </div>
+        </div> 
+    </div>
+
+<%- include('../../partials/footer.ejs') %>
+
+<script src="/scripts/comments.js"></script>
+
+</body>
+</html>
+
