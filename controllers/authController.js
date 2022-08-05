@@ -131,7 +131,7 @@ exports.changePasswordGetController = async (req, res, next) => {
 
 exports.changePasswordPostController = async (req, res, next) => {
     let {oldPassword, newPassword, confirmPassword} = req.body
-
+    
     if(newPassword !== confirmPassword) {
         req.flash('fail', 'Password Does Not Match')
         return res.redirect('/auth/change-password')

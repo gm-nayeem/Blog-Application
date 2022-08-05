@@ -10,14 +10,26 @@ const { validationResult } = require("express-validator")
 exports.dashboardGetController = async (req, res, next) => {
     try {
         let profile = await Profile.findOne({ user: req.user._id })
+            .populate({
+                path: 'posts',
+                select: 'title thumbnail'
+            })
+            .populate({
+                path: 'bookmarks',
+                select: 'title thumbnail'
+            })
+
         if (profile) {
             return res.render('pages/dashboard/dashboard', {
                 title: 'My Dashboard',
-                flashMessage: Flash.getMessage(req)
+                flashMessage: Flash.getMessage(req),
+                posts: profile.posts.reverse().slice(0, 3),
+                bookmarks: profile.bookmarks.reverse().slice(0, 3)
             })
         }
 
         res.redirect('/dashboard/create-profile')
+
     } catch (e) {
         next(e)
     }
