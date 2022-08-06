@@ -32,14 +32,14 @@
                         <% for(let post of posts) { %>
                             <div class="card mb-5">
                                 <% if(post.thumbnail) { %>
-                                    <img src="<%= post.thumbnail %>" alt="Post Thumbnail" class="card-image-top mt-3">
+                                    <img style="height:320px" src="<%= post.thumbnail %>" alt="Post Thumbnail" class="img-fluid mt-3">
                                 <% } %>
                                 <div class="card-body p-0 mt-2 mb-3">
                                     <a href="/explorer/<%= post._id %>" style="color: #222222">
                                         <h5><%= post.title %></h5>
                                         <p class="mb-4"><%= truncate(post.body) %></p>
                                     </a>
-                                    <div class="d-flex">
+                                    <div class="d-flex mb-2">
                                         <small>
                                             <%= moment(post.createdAt) %>,
                                             Posted By <a href="/author/<%= post.author._id %>"><%= post.author.username %></a>,
