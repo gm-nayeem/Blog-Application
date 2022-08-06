@@ -44,9 +44,7 @@ const routes = [
     {
         path: '/',
         handler: (req, res)=> {
-            res.json({
-                message: "Welcome To Our Blog Application"
-            })
+            res.redirect('/explorer')
         }
     }
 ]

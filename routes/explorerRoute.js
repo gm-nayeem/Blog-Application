@@ -7,8 +7,8 @@ const {
 
 const {isAuthenticated} = require('../middleware/authMiddleware')
 
-router.get('/', isAuthenticated, explorerGetController)
-router.get('/:postId', isAuthenticated, singlePostGetController)
+router.get('/', explorerGetController)
+router.get('/:postId', singlePostGetController)
 
 
 module.exports = router

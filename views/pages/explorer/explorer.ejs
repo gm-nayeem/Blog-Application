@@ -3,7 +3,7 @@
     <div class="container my-5">
 
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-6 offset-md-3">
                 <section class="mb-5">
                     <a 
                         href="/explorer?filter=latest"
@@ -25,14 +25,14 @@
 
                 <div class="row">
                     <% if(posts.length == 0) { %>
-                        <p class="text-center text-muted">
+                        <p class="text-center text-muted mt-5">
                             There is nothing to show
                         </p>
                     <% } else { %>
                         <% for(let post of posts) { %>
-                            <div class="card col-sm-5 ml-3 mb-5">
+                            <div class="card mb-5">
                                 <% if(post.thumbnail) { %>
-                                    <img style="height: 220px" src="<%= post.thumbnail %>" alt="Post Thumbnail" class="card-image-top mt-3">
+                                    <img src="<%= post.thumbnail %>" alt="Post Thumbnail" class="card-image-top mt-3">
                                 <% } %>
                                 <div class="card-body p-0 mt-2 mb-3">
                                     <a href="/explorer/<%= post._id %>" style="color: #222222">
