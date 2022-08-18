@@ -4,6 +4,7 @@ const session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
 const config = require('config')
+const path = require('path')
 //const upload = require('./uploadMiddleware')
 
 const { bindUserdWithRequest } = require('./authMiddleware');
