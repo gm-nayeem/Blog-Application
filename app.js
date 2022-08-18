@@ -12,7 +12,7 @@ const app = express();
 
 // setup view engine
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', 'views')
 
 // mongoose connection
 mongoose.connect(config.get('mongodb-uri')) 
