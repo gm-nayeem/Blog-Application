@@ -17,7 +17,7 @@ const store = new MongoDBStore({
 
 const middleware = [
     morgan('dev'),
-    express.static('public'),
+    express.static(path.join(__dirname, 'public')),
     express.urlencoded({extended: true}),
     express.json(),
     session({
