@@ -1,7 +1,7 @@
+// external imports
 const express = require('express')
 const mongoose = require('mongoose')
 const config = require('config')
-const path = require('path')
 // const chalk = require('chalk')
 
 // import Routes and Middlewares
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
-    console.log(error.message)
+    //console.log(error.message)
     if(res.headersSent){
         next('There was an header sent problem')
     } else {
@@ -46,7 +46,6 @@ app.use((error, req, res, next) => {
     //console.log(error)
     
 })
-
 
 
 module.exports = app;

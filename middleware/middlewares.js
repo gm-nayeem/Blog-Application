@@ -1,3 +1,4 @@
+// external imports
 const express = require('express')
 const morgan = require('morgan')
 const session = require('express-session');
@@ -28,8 +29,7 @@ const middleware = [
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
         },
-        store: store,
-
+        store,
     }),
     flash(),
     bindUserdWithRequest(),

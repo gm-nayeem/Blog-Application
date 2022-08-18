@@ -11,7 +11,7 @@ exports.bindUserdWithRequest = () => {
             req.user = user;
             next();
         } catch(e){
-            console.log(e);
+            // console.log(e);
             next(e);
         }
     }

@@ -34,7 +34,6 @@ exports.signupPostController = async (req, res, next) => {
             })
     }
 
-
     try{
         let hashPassword = await bcrypt.hash(password, 12);
 

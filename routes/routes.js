@@ -1,3 +1,4 @@
+// internal imports
 const authRoutes = require('./authRoute');
 const dashboardRoutes = require('./dashboardRoutes');
 const uploadRoute = require('./uploadRoutes')

@@ -28,7 +28,7 @@ module.exports = [
     body('confirmPassword')
         .isLength({min: 5}).withMessage('Your Password Must Be Greater Than 5 Chars')
         .custom(async (confirmPassword, {req}) => {
-            if(confirmPassword !== req.body.confirmPassword){
+            if(confirmPassword !== req.body.password){
                 throw new Error('Password Does Not Match')
             }
             return true
